@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h3>Login:</h3>
+        <form action = '/login' method = 'post'>
+            {% csrf_token %}
+            Email:<br>
+        <input type = 'text' name = 'email' placeholder = 'Enter email'><br>
+            Password:<br>
+        <input type = 'password' name = 'password' placeholder = 'Enter password'><br>
+        <input type = 'submit' value = 'Login'>
+        </form>
+
+        <h3>Register:</h3>
+        <form action = '/register' method = 'post'>
+            {% csrf_token %}
+            First Name:<br>
+        <input type = 'text' name = 'first_name' placeholder = 'Enter first name'><br>
+            Last Name:<br>
+        <input type = 'text' name = 'last_name' placeholder = 'Enter last name'><br>
+            Email:<br>
+        <input type = 'email' name = 'email' placeholder = 'Enter email'><br>
+            Password:<br>
+        <input type = 'password' name = 'password' placeholder = 'Enter password'><br>
+            Confirm Password:<br>
+        <input type = 'password' name = 'confirm_password' placeholder = 'Confirm password'><br>
+        <input type = 'submit' value = 'Register'>
+                {%if messages%}
+            {% for message in messages%}
+                {% if message.tags == 'error' %}
+                    <p>{{message}}</p>
+                {%endif%}
+                {% if message.tags == 'success' %}
+                    <p>{{message}}</p>
+                {%endif%}
+            {%endfor%}
+        {%endif%}
+    </body>
+</html>
